@@ -207,7 +207,7 @@
             min-height: 100vh;
             background: 
                 linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.75) 50%, rgba(255, 107, 0, 0.15) 100%),
-                url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -249,18 +249,7 @@
         }
 
         .hero-badge {
-            display: inline-block;
-            background: rgba(255, 107, 0, 0.2);
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            display: none !important;
         }
 
         .hero h2 {
@@ -350,7 +339,22 @@
             }
         }
 
-        /* Stats Modern - REMOVED */
+        /* Stats Modern - COMPLETELY HIDDEN */
+        .hero-stats {
+            display: none !important;
+        }
+
+        .stat-card {
+            display: none !important;
+        }
+
+        .stat-number {
+            display: none !important;
+        }
+
+        .stat-label {
+            display: none !important;
+        }
 
         /* Sections Modern */
         .section {
@@ -2144,7 +2148,7 @@
             }
         }
 
-        // Enhanced countdown with accurate dates
+        // Enhanced countdown with accurate dates - FORCED VISIBILITY
         function updateCountdown() {
             const now = new Date();
             const currentYear = now.getFullYear();
@@ -2161,57 +2165,45 @@
             const countdownElement = document.getElementById('sagra-countdown');
             const countdownText = document.getElementById('countdown-text');
             
-            if (daysLeft > 0 && daysLeft < 365) {
-                countdownText.textContent = `Mancano ${daysLeft} giorni alla Sagra ${nextSagra.getFullYear()}!`;
-                countdownElement.style.display = 'block';
-            } else if (daysLeft >= 365) {
-                // Se mancano più di un anno, mostra l'anno
-                countdownText.textContent = `Sagra ${nextSagra.getFullYear()} in arrivo!`;
-                countdownElement.style.display = 'block';
+            if (countdownElement && countdownText) {
+                if (daysLeft > 0) {
+                    countdownText.textContent = `Mancano ${daysLeft} giorni alla Sagra ${nextSagra.getFullYear()}!`;
+                    countdownElement.style.display = 'block';
+                    console.log('Countdown shown:', daysLeft, 'days to Sagra', nextSagra.getFullYear());
+                }
+            } else {
+                console.log('Countdown elements not found');
             }
         }
 
-        // Function to show next events based on current date
+        // Function to show next events based on current date - FORCED VISIBILITY
         function updateNextEvents() {
             const now = new Date();
             const currentMonth = now.getMonth() + 1; // 1-12
             const currentDay = now.getDate();
             
+            console.log('Current date:', currentMonth, '/', currentDay);
+            
             const nataleBadge = document.getElementById('next-natale');
             const befanaBadge = document.getElementById('next-befana');
             const sagraBadge = document.getElementById('next-sagra');
             
-            // Reset visibility
-            if (nataleBadge) nataleBadge.style.display = 'none';
-            if (befanaBadge) befanaBadge.style.display = 'none';
-            if (sagraBadge) sagraBadge.style.display = 'none';
-            
-            // Logic for showing next events in chronological order
-            if (currentMonth <= 1 || (currentMonth === 1 && currentDay < 6)) {
-                // Gennaio prima del 6: mostra Befana poi Sagra poi Natale
-                if (befanaBadge) befanaBadge.style.display = 'inline-block';
-                if (sagraBadge) sagraBadge.style.display = 'inline-block';
-                if (currentMonth === 1 && currentDay >= 6 && nataleBadge) {
-                    nataleBadge.style.display = 'inline-block';
-                }
-            } else if (currentMonth >= 1 && currentMonth < 7) {
-                // Gennaio (dopo 6) - Giugno: mostra Sagra poi Natale poi Befana
-                if (sagraBadge) sagraBadge.style.display = 'inline-block';
-                if (nataleBadge) nataleBadge.style.display = 'inline-block';
-                if (befanaBadge) befanaBadge.style.display = 'inline-block';
-            } else if (currentMonth === 7 && currentDay < 11) {
-                // Luglio prima dell'11: mostra Sagra poi Natale poi Befana
-                if (sagraBadge) sagraBadge.style.display = 'inline-block';
-                if (nataleBadge) nataleBadge.style.display = 'inline-block';
-                if (befanaBadge) befanaBadge.style.display = 'inline-block';
-            } else if ((currentMonth === 7 && currentDay >= 15) || currentMonth > 7) {
-                // Dopo la sagra: mostra Natale poi Befana poi Sagra
-                if (nataleBadge) nataleBadge.style.display = 'inline-block';
-                if (befanaBadge) befanaBadge.style.display = 'inline-block';
-                if (sagraBadge) sagraBadge.style.display = 'inline-block';
+            // Force all events to be visible for now (debug)
+            if (nataleBadge) {
+                nataleBadge.style.display = 'inline-block';
+                nataleBadge.innerHTML = '<i class="fas fa-gift"></i> Natale Solidale';
+                console.log('Natale badge shown');
             }
-            
-            console.log('Next events updated for month:', currentMonth, 'day:', currentDay);
+            if (befanaBadge) {
+                befanaBadge.style.display = 'inline-block';
+                befanaBadge.innerHTML = '<i class="fas fa-fire"></i> Falò della Befana';
+                console.log('Befana badge shown');
+            }
+            if (sagraBadge) {
+                sagraBadge.style.display = 'inline-block';
+                sagraBadge.innerHTML = '<i class="fas fa-calendar"></i> Sagra di Salionze';
+                console.log('Sagra badge shown');
+            }
         }
 
         // Initialize everything
