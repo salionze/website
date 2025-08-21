@@ -3,28 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Associazione I Salionzesi ETS - Salionze, Valeggio sul Mincio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>Associazione I Salionzesi ETS - Salionze di Valeggio sul Mincio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        :root {
-            --primary-orange: #FF6B00;
-            --vibrant-orange: #FF8C42;
-            --dark-orange: #E55A00;
-            --deep-black: #0A0A0A;
-            --charcoal: #1A1A1A;
-            --dark-gray: #2D2D2D;
-            --light-gray: #F5F5F5;
-            --white: #FFFFFF;
-            --accent-gold: #FFB000;
-            --shadow-orange: rgba(255, 107, 0, 0.3);
-            --shadow-dark: rgba(0, 0, 0, 0.8);
-            --gradient-primary: linear-gradient(135deg, #FF6B00 0%, #E55A00 100%);
-            --gradient-dark: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.9) 50%, rgba(255, 107, 0, 0.1) 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -32,43 +12,46 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: var(--white);
-            background: var(--deep-black);
+            color: #333;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #0f0f0f 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Animated Background */
-        .bg-particles {
+        /* Floating Particles */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: var(--deep-black);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--primary-orange);
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
             border-radius: 50%;
-            animation: float 15s infinite linear;
+            animation: float 8s infinite linear;
             opacity: 0.6;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
                 opacity: 0;
             }
             10% {
@@ -78,141 +61,126 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* Header Ultra Modern */
-        header {
-            background: rgba(10, 10, 10, 0.95);
+        /* Header with Glass Morphism */
+        .header {
+            background: rgba(255, 140, 0, 0.1);
             backdrop-filter: blur(20px);
-            border-bottom: 2px solid var(--primary-orange);
-            padding: 1.5rem 0;
-            position: sticky;
+            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 8px 40px var(--shadow-dark);
+            transition: all 0.3s ease;
         }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--white);
-            box-shadow: 0 8px 25px var(--shadow-orange);
-            animation: pulse 3s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .logo-text h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            color: var(--light-gray);
-            font-weight: 300;
-            margin-top: 0.2rem;
-        }
-
-        /* Navigation Futuristic */
-        nav {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--dark-gray);
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.5);
         }
 
         .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .nav-container a {
-            color: var(--light-gray);
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: white;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-            border: 2px solid transparent;
-            background: rgba(45, 45, 45, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
-        .nav-container a::before {
+        .nav-menu a::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--gradient-primary);
-            transition: left 0.4s ease;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            transition: left 0.3s ease;
             z-index: -1;
         }
 
-        .nav-container a:hover::before,
-        .nav-container a.active::before {
+        .nav-menu a:hover::before {
             left: 0;
         }
 
-        .nav-container a:hover,
-        .nav-container a.active {
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--shadow-orange);
-            border-color: var(--primary-orange);
+        .nav-menu a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
         }
 
-        /* Hero Section Ultra Modern */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 140, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Dynamic Hero Section */
         .hero {
-            min-height: 100vh;
             background: 
-                linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.75) 50%, rgba(255, 107, 0, 0.15) 100%),
-                url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+                linear-gradient(rgba(0,0,0,0.4), rgba(255,140,0,0.1)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            height: 100vh;
             display: flex;
             align-items: center;
+            color: white;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
@@ -225,134 +193,116 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 107, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 140, 66, 0.15) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(10, 10, 10, 0.4) 0%, rgba(26, 26, 26, 0.6) 100%);
+                radial-gradient(circle at 30% 20%, rgba(255, 140, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 179, 71, 0.2) 0%, transparent 50%);
+            animation: heroGlow 6s ease-in-out infinite alternate;
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="%23FF6B00" stroke-width="0.3" opacity="0.08"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
-            pointer-events: none;
+        @keyframes heroGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
         }
 
         .hero-content {
-            z-index: 3;
-            position: relative;
-            animation: slideUp 1.2s ease-out;
             max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 107, 0, 0.2);
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero h2 {
-            font-family: 'Orbitron', monospace;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .hero h2 .highlight {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
+            z-index: 2;
+            animation: heroEntry 1.5s ease-out;
         }
 
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: var(--light-gray);
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .cta-primary {
-            background: var(--gradient-primary);
-            color: var(--white);
-            padding: 18px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px var(--shadow-orange);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--primary-orange);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: var(--primary-orange);
-            padding: 18px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.4s ease;
-            border: 2px solid var(--primary-orange);
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px var(--shadow-orange);
-        }
-
-        .cta-secondary:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        @keyframes slideUp {
-            from {
+        @keyframes heroEntry {
+            0% {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(50px) scale(0.9);
             }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffffff, #ff8c00, #ffb347, #ffffff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+            line-height: 1.1;
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Stats Modern - REMOVED */
+        .cta-button {
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            background-size: 200% 200%;
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
 
-        /* Sections Modern */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.5);
+            background-position: 100% 0;
+        }
+
+        /* Main Content with Glass Cards */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
         .section {
             padding: 6rem 0;
             display: none;
@@ -361,1201 +311,703 @@
 
         .section.active {
             display: block;
-            animation: fadeIn 0.6s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-        }
-
-        .section-header::before {
+        .section::before {
             content: '';
             position: absolute;
-            top: 50%;
+            top: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--primary-orange) 0%, transparent 70%);
-            opacity: 0.03;
-            z-index: -1;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            border-radius: 1px;
         }
 
-        .section-subtitle {
-            font-size: 0.9rem;
-            color: var(--primary-orange);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', monospace;
+        .section h2 {
             font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: white;
+            margin-bottom: 3rem;
+            text-align: center;
             position: relative;
-        }
-
-        .section-title .highlight {
-            background: var(--gradient-primary);
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffffff, #ff8c00);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInFromTop 0.8s ease-out;
         }
 
-        .section-description {
-            font-size: 1.2rem;
-            color: var(--light-gray);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Cards Ultra Modern */
-        .cards-grid {
+        /* Enhanced Event Cards */
+        .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
             margin-top: 4rem;
         }
 
-        .modern-card {
-            background: var(--charcoal);
-            border: 1px solid var(--dark-gray);
-            border-radius: 25px;
-            padding: 3rem;
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-            backdrop-filter: blur(10px);
-        }
-
-        .modern-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .modern-card:hover::before {
-            left: 100%;
-        }
-
-        .modern-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--primary-orange);
-            box-shadow: 0 25px 50px var(--shadow-dark);
-        }
-
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--white);
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px var(--shadow-orange);
-        }
-
-        .card-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--white);
-        }
-
-        .card-description {
-            color: var(--light-gray);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        /* Event Highlight Ultra Modern */
-        .event-showcase {
-            background: var(--gradient-primary);
-            border-radius: 30px;
-            padding: 4rem;
-            margin: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px var(--shadow-orange);
-        }
-
-        .event-showcase::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
-            background-size: 20px 20px;
-            animation: rotateBackground 20s linear infinite;
-        }
-
-        @keyframes rotateBackground {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .event-showcase h3 {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .event-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .event-badge {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .event-badge:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        /* Gallery Modern */
-        .gallery-section {
-            margin: 4rem 0;
-            background: var(--charcoal);
-            border: 1px solid var(--dark-gray);
-            border-radius: 25px;
-            padding: 3rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .gallery-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .gallery-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .gallery-title .highlight {
-            color: var(--primary-orange);
-        }
-
-        .gallery-filters {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            color: var(--light-gray);
-            border: 1px solid var(--dark-gray);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-orange);
-            color: var(--white);
-            border-color: var(--primary-orange);
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .photo-card {
-            background: var(--dark-gray);
-            border-radius: 20px;
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 107, 0, 0.2);
+            cursor: pointer;
+            animation: slideInFromBottom 0.8s ease-out;
         }
 
-        .photo-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px var(--shadow-dark);
-            border-color: var(--primary-orange);
+        @keyframes slideInFromBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--charcoal) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--light-gray);
-            font-weight: 600;
-            text-align: center;
-            position: relative;
-        }
-
-        .photo-placeholder::before {
+        .event-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF6B00"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 40px;
-            opacity: 0.3;
+            background: linear-gradient(45deg, rgba(255, 140, 0, 0.1), rgba(255, 179, 71, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
-        .photo-placeholder i {
-            font-size: 2.5rem;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
+        .event-card:hover::before {
+            opacity: 1;
         }
 
-        /* Contact Cards */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        .event-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(255, 140, 0, 0.3);
+            border-color: rgba(255, 140, 0, 0.8);
         }
 
-        .contact-card {
-            background: var(--charcoal);
-            border: 1px solid var(--dark-gray);
+        .event-date {
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            color: white;
+            padding: 0.8rem 1.5rem;
             border-radius: 25px;
-            padding: 3rem;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .event-card h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .event-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Enhanced Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 140, 0, 0.6);
+        }
+
+        .info-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
             transition: all 0.3s ease;
+        }
+
+        .info-card:hover .info-card-icon {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.6);
+        }
+
+        .info-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, rgba(255, 140, 0, 0.1), rgba(255, 179, 71, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .contact-card::before {
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .gallery-item:hover::before {
+            left: 100%;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotateZ(2deg);
+            border-color: rgba(255, 140, 0, 0.8);
+            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Enhanced Login Form */
+        .login-form {
+            max-width: 450px;
+            margin: 3rem auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-form::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 140, 0, 0.05), rgba(255, 179, 71, 0.05));
+            z-index: -1;
         }
 
-        .contact-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-orange);
-            box-shadow: 0 20px 40px var(--shadow-dark);
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
         }
 
-        .contact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--white);
-            margin: 0 auto 2rem auto;
-            box-shadow: 0 10px 25px var(--shadow-orange);
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
 
-        .contact-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .form-group input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 140, 0, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            transition: all 0.3s ease;
         }
 
-        .contact-info {
-            color: var(--light-gray);
-            line-height: 1.8;
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Footer Modern */
-        footer {
-            background: var(--gradient-dark);
-            border-top: 2px solid var(--primary-orange);
-            padding: 4rem 0 2rem;
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff8c00;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .login-button {
+            width: 100%;
+            background: linear-gradient(45deg, #ff8c00, #ffb347);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .login-button:hover::before {
+            left: 100%;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.4);
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 140, 0, 0.1));
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 140, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
             margin-top: 6rem;
             position: relative;
         }
 
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
-        .footer-section h4 {
-            font-family: 'Orbitron', monospace;
-            color: var(--primary-orange);
+        .footer-section h3 {
+            color: #ff8c00;
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .footer-section p {
-            color: var(--light-gray);
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--dark-gray);
-            color: var(--light-gray);
-        }
-
-        /* Back to Top Modern */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            color: var(--white);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-            box-shadow: 0 8px 25px var(--shadow-orange);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 12px 35px var(--shadow-orange);
-        }
-
-        /* Mobile Responsiveness */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.8rem;
+            .nav-menu {
+                display: none;
             }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
+
+            .mobile-menu {
+                display: block;
             }
-            
-            .hero-stats {
-                position: static;
-                transform: none;
-                margin-top: 3rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
+
+            .hero p {
+                font-size: 1.1rem;
             }
-            
-            .gallery-header {
-                flex-direction: column;
-                text-align: center;
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section h2 {
+                font-size: 2.5rem;
+            }
+
+            .events-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            body {
+                padding-top: 80px;
             }
         }
 
-        /* Loading Animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--deep-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-screen.hidden {
+        /* Scroll Animations */
+        .scroll-animate {
             opacity: 0;
-            pointer-events: none;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
-        .loader {
-            width: 80px;
-            height: 80px;
-            border: 3px solid var(--dark-gray);
-            border-top: 3px solid var(--primary-orange);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-    </div>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
 
-    <!-- Animated Background -->
-    <div class="bg-particles" id="bgParticles"></div>
-
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="logo-text">
-                        <h1>Associazione I Salionzesi</h1>
-                        <p>Tradizione • Cultura • Comunità</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">I Salionzesi ETS</a>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('info')">Il Paese</a></li>
+                <li><a href="#" onclick="showSection('eventi')">Eventi</a></li>
+                <li><a href="#" onclick="showSection('gallery')">Galleria</a></li>
+                <li><a href="#" onclick="showSection('contatti')">Contatti</a></li>
+                <li><a href="#" onclick="showSection('riservata')">Area Riservata</a></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+        </nav>
     </header>
 
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <a href="#" onclick="showSection('home')" class="active">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="#" onclick="showSection('chi-siamo')">
-                    <i class="fas fa-users"></i> Chi Siamo
-                </a>
-                <a href="#" onclick="showSection('sagra')">
-                    <i class="fas fa-calendar-star"></i> Sagra
-                </a>
-                <a href="#" onclick="showSection('eventi')">
-                    <i class="fas fa-star"></i> Eventi
-                </a>
-                <a href="#" onclick="showSection('storia')">
-                    <i class="fas fa-scroll"></i> Storia
-                </a>
-                <a href="#" onclick="showSection('gallery')">
-                    <i class="fas fa-camera"></i> Gallery
-                </a>
-                <a href="#" onclick="showSection('contatti')">
-                    <i class="fas fa-envelope"></i> Contatti
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HOME SECTION -->
+    <!-- Home Section -->
     <section id="home" class="section active">
         <div class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <i class="fas fa-crown"></i> L'evento
-                    </div>
-                    <h2>
-                        IL CUORE <span class="highlight">STORICO</span><br>
-                        DI <span class="highlight">SALIONZE</span>
-                    </h2>
-                    <p class="hero-subtitle">
-                        Dove la leggenda di Attila e Papa Leone Magno rivive ogni anno in una spettacolare rievocazione storica che unisce passato e presente in un'esperienza indimenticabile.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" onclick="showSection('sagra')" class="cta-primary">
-                            <i class="fas fa-calendar-star"></i> Scopri la Sagra
-                        </a>
-                        <a href="#" onclick="showSection('storia')" class="cta-secondary">
-                            <i class="fas fa-scroll"></i> La Storia
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-number">452</span>
-                    <span class="stat-label">Anno d.C.</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Giorni Festa</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1573</span>
-                    <span class="stat-label">Anni Storia</span>
-                </div>
+            <div class="hero-content">
+                <h1>Associazione I Salionzesi ETS</h1>
+                <p>Volontari al servizio della comunità di Salionze di Valeggio sul Mincio</p>
+                <a href="#" onclick="showSection('eventi')" class="cta-button">Scopri i nostri eventi</a>
             </div>
         </div>
-
-        <div class="container" style="padding: 6rem 20px;">
-            <div class="section-header">
-                <div class="section-subtitle">I Nostri Punti di Forza</div>
-                <h2 class="section-title">
-                    EVENTI <span class="highlight">STRAORDINARI</span>
-                </h2>
-                <p class="section-description">
-                    Scopri l'eccellenza delle nostre manifestazioni che uniscono storia, tradizione e innovazione in un mix perfetto di cultura e divertimento.
-                </p>
-            </div>
-            
-            <div class="cards-grid">
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="card-title">Rievocazione Epica</h3>
-                    <p class="card-description">
-                        La più spettacolare rievocazione storica del Veneto: l'incontro tra Papa Leone Magno e Attila del 452 d.C. rivive con centinaia di figuranti, cavalli, armature e un'atmosfera davvero magica.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="card-title">Gastronomia Premium</h3>
-                    <p class="card-description">
-                        Quattro giorni di festa con tortellini di Valeggio fatti a mano, carni alla griglia, vini DOC del territorio Garda-Custoza e birre artigianali selezionate.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="card-title">Solidarietà Attiva</h3>
-                    <p class="card-description">
-                        Eventi solidali tutto l'anno: pacchi regalo natalizi per gli anziani, falò dell'Epifania con rinfresco comunitario e iniziative di aggregazione sociale.
-                    </p>
-                </div>
-            </div>
-
-            <div class="event-showcase">
-                <h3><i class="fas fa-star"></i> Prossimi Eventi 2025</h3>
-                <p style="font-size: 1.2rem; margin: 1.5rem 0; position: relative; z-index: 2;">
-                    Non perdere le date più importanti dell'anno per la nostra comunità
-                </p>
-                <div class="event-badges">
-                    <div class="event-badge">
-                        <i class="fas fa-calendar"></i> Luglio • Sagra Storica
-                    </div>
-                    <div class="event-badge">
-                        <i class="fas fa-gift"></i> Dicembre • Natale Solidale
-                    </div>
-                    <div class="event-badge">
-                        <i class="fas fa-fire"></i> Gennaio • Falò Befana
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHI SIAMO SECTION -->
-    <section id="chi-siamo" class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">La Nostra Identità</div>
-                <h2 class="section-title">
-                    CHI <span class="highlight">SIAMO</span>
-                </h2>
-                <p class="section-description">
-                    Un'associazione di volontari appassionati che mantiene vive le tradizioni millenarie e crea momenti indimenticabili per tutta la comunità di Salionze.
-                </p>
-            </div>
-            
-            <div class="cards-grid">
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-flag"></i>
+            <div class="section" style="display: block; padding: 6rem 0;">
+                <h2>Chi Siamo</h2>
+                <div class="info-grid">
+                    <div class="info-card scroll-animate">
+                        <div class="info-card-icon">🏛️</div>
+                        <h3>La nostra missione</h3>
+                        <p>Organizziamo eventi e manifestazioni per valorizzare la tradizione e la comunità di Salionze</p>
                     </div>
-                    <h3 class="card-title">La Nostra Missione</h3>
-                    <p class="card-description">
-                        L'<strong>Associazione I Salionzesi ETS</strong> è un'organizzazione di volontariato che opera a Salionze, frazione di Valeggio sul Mincio (VR). Promuoviamo cultura locale, organizziamo eventi memorabili e preserviamo le tradizioni storiche del territorio.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-hands-helping"></i>
+                    <div class="info-card scroll-animate">
+                        <div class="info-card-icon">👥</div>
+                        <h3>I volontari</h3>
+                        <p>Un gruppo di cittadini appassionati che dedica il proprio tempo libero al paese</p>
                     </div>
-                    <h3 class="card-title">I Nostri Valori</h3>
-                    <p class="card-description">
-                        Tradizione, solidarietà, comunità e innovazione culturale sono i pilastri della nostra associazione. Crediamo nel potere della storia di unire le generazioni e nel valore della condivisione comunitaria.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-certificate"></i>
+                    <div class="info-card scroll-animate">
+                        <div class="info-card-icon">🎉</div>
+                        <h3>Gli eventi</h3>
+                        <p>Quattro appuntamenti annuali che animano la vita sociale di Salionze</p>
                     </div>
-                    <h3 class="card-title">Riconoscimenti</h3>
-                    <p class="card-description">
-                        Ente del Terzo Settore (ETS) ufficialmente riconosciuto, patrocinato dal Comune di Valeggio sul Mincio. La nostra rievocazione storica ha ottenuto riconoscimenti regionali per l'eccellenza culturale.
-                    </p>
                 </div>
-            </div>
-
-            <div class="event-showcase">
-                <h3><i class="fas fa-trophy"></i> I Nostri Successi</h3>
-                <p style="font-size: 1.2rem; margin: 1.5rem 0; position: relative; z-index: 2;">
-                    Oltre 40 anni di tradizione, migliaia di visitatori ogni anno, gemellaggio con Bernalda (MT)
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- SAGRA SECTION -->
-    <section id="sagra" class="section">
+    <!-- Info Paese Section -->
+    <section id="info" class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">L'Evento dell'Anno</div>
-                <h2 class="section-title">
-                    SAGRA DI <span class="highlight">SALIONZE</span>
-                </h2>
-                <p class="section-description">
-                    Quattro giorni spettacolari che culminano con la rievocazione storica più emozionante del Veneto, presso gli impianti sportivi di Salionze.
-                </p>
-            </div>
-
-            <div class="cards-grid">
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <h3 class="card-title">Venerdì • Apertura</h3>
-                    <p class="card-description">
-                        <strong>19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>21:00</strong> - Musica dal vivo e DJ set<br><br>
-                        Start esplosivo con specialità locali, tortellini artigianali e atmosfera festosa per inaugurare la sagra più attesa dell'anno.
-                    </p>
+            <h2>Salionze di Valeggio sul Mincio</h2>
+            <div class="info-grid">
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">📍</div>
+                    <h3>Posizione</h3>
+                    <p>Frazione del comune di Valeggio sul Mincio, in provincia di Verona, situata nella suggestiva campagna veneta</p>
                 </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3 class="card-title">Sabato • Music Night</h3>
-                    <p class="card-description">
-                        <strong>19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>21:00</strong> - Concerti live e balli<br><br>
-                        Serata dedicata alla musica con artisti del territorio, orchestre dal vivo e pista da ballo sotto le stelle.
-                    </p>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">🏛️</div>
+                    <h3>Storia</h3>
+                    <p>Un piccolo borgo ricco di storia e tradizioni, testimone di secoli di vita rurale veneta</p>
                 </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-drumstick-bite"></i>
-                    </div>
-                    <h3 class="card-title">Domenica • Tradizioni</h3>
-                    <p class="card-description">
-                        <strong>19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>21:00</strong> - Spettacoli folkloristici<br><br>
-                        Giornata familiare con piatti della tradizione veronese, vini DOC del Garda e spettacoli per tutte le età.
-                    </p>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">🌾</div>
+                    <h3>Territorio</h3>
+                    <p>Caratterizzato da paesaggi rurali, vigneti e una forte identità agricola che si mantiene viva</p>
                 </div>
-            </div>
-
-            <div class="event-showcase">
-                <h3><i class="fas fa-crown"></i> LUNEDÌ • EVENTO STORICO PRINCIPALE</h3>
-                <div style="margin: 2rem 0; font-size: 1.1rem; position: relative; z-index: 2;">
-                    <p><strong><i class="fas fa-clock"></i> ORE 19:30</strong> - Apertura chioschi gastronomici</p>
-                    <p style="margin: 1rem 0;"><strong><i class="fas fa-crown"></i> ORE 21:30</strong> - <span style="font-size: 1.4rem; font-weight: 900;">RIEVOCAZIONE STORICA IN COSTUME</span></p>
-                    <p style="font-size: 1.3rem; margin: 1rem 0; font-weight: 700;">L'INCONTRO TRA PAPA LEONE MAGNO E ATTILA</p>
-                    <p><strong><i class="fas fa-star"></i> A SEGUIRE</strong> - Grand Finale con Fuochi d'Artificio</p>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">⛪</div>
+                    <h3>Comunità</h3>
+                    <p>Una comunità unita che mantiene vive le tradizioni attraverso la partecipazione attiva dei cittadini</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EVENTI SECTION -->
+    <!-- Eventi Section -->
     <section id="eventi" class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Calendario Annuale</div>
-                <h2 class="section-title">
-                    I NOSTRI <span class="highlight">EVENTI</span>
-                </h2>
-                <p class="section-description">
-                    Un calendario ricco di appuntamenti che animano la vita comunitaria durante tutto l'anno con momenti di festa, cultura e solidarietà.
-                </p>
-            </div>
-            
-            <div class="cards-grid">
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-theater-masks"></i>
-                    </div>
-                    <h3 class="card-title">Rievocazione Storica</h3>
-                    <p class="card-description">
-                        <strong><i class="fas fa-calendar"></i> Luglio</strong> - Lunedì della Sagra<br>
-                        <strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Impianti sportivi<br><br>
-                        Spettacolo unico con 200+ figuranti in costume, cavalli, armi d'epoca, accampamenti storici e la ricostruzione fedele dell'incontro del 452 d.C.
-                    </p>
+            <h2>I Nostri Eventi</h2>
+            <div class="events-grid">
+                <div class="event-card scroll-animate">
+                    <div class="event-date">6 Gennaio</div>
+                    <h3>Epifania - Falò della Befana</h3>
+                    <p>La tradizionale celebrazione dell'Epifania con il grande falò che conclude le festività natalizie. Un momento di aggregazione per tutta la comunità con vin brulé e dolci tradizionali.</p>
                 </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-gifts"></i>
-                    </div>
-                    <h3 class="card-title">Natale Solidale</h3>
-                    <p class="card-description">
-                        <strong><i class="fas fa-calendar"></i> Dicembre</strong> - Periodo natalizio<br>
-                        <strong><i class="fas fa-heart"></i> Beneficiari:</strong> Anziani del paese<br><br>
-                        Iniziativa di solidarietà con preparazione e consegna personalizzata di pacchi regalo per tutti gli anziani della comunità.
-                    </p>
+                <div class="event-card scroll-animate">
+                    <div class="event-date">Seconda Domenica di Luglio</div>
+                    <h3>Sagra del Paese</h3>
+                    <p>L'evento principale dell'anno che si svolge in concomitanza con la festa dei Santi Pietro e Paolo. Quattro giorni di festa con stand gastronomici, musica e intrattenimento per tutte le età.</p>
                 </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3 class="card-title">Falò dell'Epifania</h3>
-                    <p class="card-description">
-                        <strong><i class="fas fa-calendar"></i> 6 Gennaio</strong> - Epifania<br>
-                        <strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Centro paese<br><br>
-                        Tradizionale falò augurale che chiude le festività con grande fuoco comunitario, vin brulé e dolci per tutti i partecipanti.
-                    </p>
+                <div class="event-card scroll-animate">
+                    <div class="event-date">13 Dicembre</div>
+                    <h3>Festa di Santa Lucia</h3>
+                    <p>In collaborazione con la parrocchia di Salionze, organizziamo un contributo speciale alla celebrazione di Santa Lucia, patrona della vista e della luce.</p>
                 </div>
-            </div>
-
-            <div class="event-showcase">
-                <h3><i class="fas fa-handshake"></i> Partnership Strategiche</h3>
-                <p style="font-size: 1.2rem; margin: 1.5rem 0; position: relative; z-index: 2;">
-                    Gemellaggio culturale con Bernalda (MT) • Patrocinio Comune di Valeggio sul Mincio • Collaborazione Pro Loco Veneto
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- STORIA SECTION -->
-    <section id="storia" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Il Nostro Patrimonio</div>
-                <h2 class="section-title">
-                    LA <span class="highlight">STORIA</span>
-                </h2>
-                <p class="section-description">
-                    Un viaggio attraverso 1573 anni di storia per scoprire l'evento leggendario che ha dato origine al nome di Salionze e ha cambiato il destino dell'Europa.
-                </p>
-            </div>
-            
-            <div class="event-showcase" style="margin-bottom: 4rem;">
-                <h3><i class="fas fa-scroll"></i> L'INCONTRO CHE FERMÒ ATTILA</h3>
-                <p style="font-size: 1.3rem; margin: 2rem 0; position: relative; z-index: 2; line-height: 1.8;">
-                    "Nel 452 d.C., sulle rive del fiume Mincio, nella località chiamata 'Ager Ambulejus' (oggi Salionze), avvenne uno degli eventi più significativi della storia europea: l'incontro tra Attila, il temibile re degli Unni, e Papa Leone Magno che salvò Roma dalla distruzione."
-                </p>
-            </div>
-
-            <div class="cards-grid">
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-sword"></i>
-                    </div>
-                    <h3 class="card-title">Il Contesto Storico</h3>
-                    <p class="card-description">
-                        Attila, soprannominato "Flagello di Dio", aveva devastato Aquileia, Padova, Verona, Brescia e Milano. La sua inarrestabile avanzata terrorizzava l'Italia quando Papa Leone Magno prese la coraggiosa decisione di incontrarlo personalmente.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="card-title">L'Incontro Leggendario</h3>
-                    <p class="card-description">
-                        L'incontro avvenne presso l'antico guado del Mincio. Secondo le cronache, Papa Leone riuscì a convincere Attila a ritirarsi, fermando l'avanzata verso Roma e salvando la civiltà occidentale dalla distruzione.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="card-title">La Leggenda Divina</h3>
-                    <p class="card-description">
-                        La tradizione narra che durante il colloquio apparvero i Santi Pietro e Paolo armati di spade fiammeggianti. Impressionato dalla visione, Attila spezzò una freccia in segno di rinuncia alla conquista di Roma.
-                    </p>
-                </div>
-            </div>
-
-            <div class="modern-card" style="margin-top: 3rem; background: var(--gradient-primary); border: none;">
-                <div style="text-align: center; color: white;">
-                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1.5rem;">
-                        <i class="fas fa-church"></i> IL NOME DI SALIONZE
-                    </h3>
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: white;">
-                        Il nome della nostra frazione deriva da <strong>San Leone Magno</strong> (San Lionce in dialetto locale), 
-                        testimonianza eterna dell'importanza di questo evento per la nostra comunità. 
-                        Dal 1980 riviviamo questo momento epico attraverso la nostra spettacolare rievocazione storica.
-                    </p>
+                <div class="event-card scroll-animate">
+                    <div class="event-date">Natale</div>
+                    <h3>Pacchi Dono agli Anziani</h3>
+                    <p>Durante le festività natalizie, consegniamo pacchi dono agli anziani del paese, un gesto di vicinanza e affetto verso i nostri concittadini più saggi.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GALLERY SECTION -->
+    <!-- Gallery Section -->
     <section id="gallery" class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">I Nostri Ricordi</div>
-                <h2 class="section-title">
-                    GALLERY <span class="highlight">FOTOGRAFICA</span>
-                </h2>
-                <p class="section-description">
-                    Una collezione dei momenti più belli e emozionanti dei nostri eventi, organizzata per anni e tipologie di manifestazioni.
-                </p>
+            <h2>Galleria Foto</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: rgba(255,255,255,0.8); font-size: 1.2rem;">Ricordi dei nostri eventi e delle attività dell'associazione</p>
+            <div class="gallery-grid">
+                <div class="gallery-item scroll-animate">📸 Epifania 2024</div>
+                <div class="gallery-item scroll-animate">📸 Sagra 2024</div>
+                <div class="gallery-item scroll-animate">📸 Santa Lucia 2023</div>
+                <div class="gallery-item scroll-animate">📸 Natale 2023</div>
+                <div class="gallery-item scroll-animate">📸 Volontari</div>
+                <div class="gallery-item scroll-animate">📸 Preparativi</div>
+                <div class="gallery-item scroll-animate">📸 Momenti Speciali</div>
+                <div class="gallery-item scroll-animate">📸 Tradizioni</div>
             </div>
-
-            <div class="gallery-section">
-                <div class="gallery-header">
-                    <h3 class="gallery-title">
-                        ARCHIVIO <span class="highlight">2024</span>
-                    </h3>
-                    <div class="gallery-filters">
-                        <button class="filter-btn active" onclick="filterGallery('all')">
-                            <i class="fas fa-images"></i> Tutti
-                        </button>
-                        <button class="filter-btn" onclick="filterGallery('sagra')">
-                            <i class="fas fa-crown"></i> Sagra
-                        </button>
-                        <button class="filter-btn" onclick="filterGallery('natale')">
-                            <i class="fas fa-gift"></i> Natale
-                        </button>
-                        <button class="filter-btn" onclick="filterGallery('befana')">
-                            <i class="fas fa-fire"></i> Befana
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="photo-grid">
-                    <div class="photo-card" data-category="sagra" onclick="openPhotoModal('Rievocazione Storica 2024')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-crown"></i>
-                            <span>Rievocazione Storica 2024</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" data-category="sagra" onclick="openPhotoModal('Corteo Papa Leone')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-users"></i>
-                            <span>Corteo Papa Leone</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" data-category="sagra" onclick="openPhotoModal('Accampamento Unno')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-campground"></i>
-                            <span>Accampamento Unno</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" data-category="sagra" onclick="openPhotoModal('Fuochi Artificio')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-star"></i>
-                            <span>Fuochi d'Artificio</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" data-category="natale" onclick="openPhotoModal('Pacchi Natale')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-gift"></i>
-                            <span>Consegna Pacchi Natale</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" data-category="befana" onclick="openPhotoModal('Falò Befana')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-fire"></i>
-                            <span>Falò della Befana</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-section">
-                <div class="gallery-header">
-                    <h3 class="gallery-title">
-                        ARCHIVIO <span class="highlight">2023</span>
-                    </h3>
-                </div>
-                
-                <div class="photo-grid">
-                    <div class="photo-card" onclick="openPhotoModal('Sagra 2023')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-calendar"></i>
-                            <span>Sagra 2023 - Highlights</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" onclick="openPhotoModal('Volontari 2023')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-hands-helping"></i>
-                            <span>Volontari in Azione</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" onclick="openPhotoModal('Comunità 2023')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-heart"></i>
-                            <span>Momenti di Comunità</span>
-                        </div>
-                    </div>
-                    <div class="photo-card" onclick="openPhotoModal('Preparativi 2023')">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-tools"></i>
-                            <span>Dietro le Quinte</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modern-card" style="text-align: center; margin-top: 3rem;">
-                <div class="card-icon" style="margin: 0 auto 2rem auto;">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <h3 class="card-title">Carica le Tue Foto</h3>
-                <p class="card-description">
-                    Hai foto dei nostri eventi? Condividile con la comunità! Ogni immagine contribuisce a preservare la memoria storica della nostra associazione e dei momenti più belli vissuti insieme.
-                </p>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="cta-button" onclick="alert('Funzionalità in fase di sviluppo! Presto potrai caricare le tue foto degli eventi.')">Carica Nuove Foto</button>
             </div>
         </div>
     </section>
 
-    <!-- CONTATTI SECTION -->
+    <!-- Contatti Section -->
     <section id="contatti" class="section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Resta Connesso</div>
-                <h2 class="section-title">
-                    I NOSTRI <span class="highlight">CONTATTI</span>
-                </h2>
-                <p class="section-description">
-                    Entra in contatto con noi per informazioni, collaborazioni o per unirti alla nostra famiglia di volontari appassionati.
-                </p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="contact-title">Location</h3>
-                    <div class="contact-info">
-                        <p><strong>Salionze</strong><br>
-                        Frazione di Valeggio sul Mincio<br>
-                        Provincia di Verona, Veneto<br>
-                        Italia<br><br>
-                        <em>Nel cuore della pianura veronese, strategicamente posizionata tra il Lago di Garda e la città scaligera</em></p>
-                    </div>
+            <h2>Contatti</h2>
+            <div class="info-grid">
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>info@salionze.it<br>eventi@salionze.it</p>
                 </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-digital-tachograph"></i>
-                    </div>
-                    <h3 class="contact-title">Digital Hub</h3>
-                    <div class="contact-info">
-                        <p><strong>Email:</strong> info@salionze.it<br>
-                        <strong>Website:</strong> www.salionze.it<br>
-                        <strong>Social Media:</strong> @SalionzesiETS<br><br>
-                        <em>Seguici sui social per aggiornamenti in tempo reale, backstage degli eventi e novità dell'associazione</em></p>
-                    </div>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>Seguici sui nostri canali social per rimanere sempre aggiornato sulle nostre attività</p>
                 </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="contact-title">Info Legali</h3>
-                    <div class="contact-info">
-                        <p><strong>Associazione I Salionzesi ETS</strong><br>
-                        Ente del Terzo Settore<br>
-                        Organizzazione di Volontariato<br>
-                        Codice Fiscale: [da inserire]<br><br>
-                        <em>Patrocinata dal Comune di Valeggio sul Mincio e riconosciuta dalla Regione Veneto</em></p>
-                    </div>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">👥</div>
+                    <h3>Unisciti a noi</h3>
+                    <p>Vuoi diventare volontario? Contattaci per informazioni su come partecipare alle nostre attività</p>
                 </div>
-            </div>
-
-            <div class="event-showcase" style="margin-top: 4rem;">
-                <h3><i class="fas fa-route"></i> COME RAGGIUNGERCI</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; position: relative; z-index: 2;">
-                    <div style="text-align: left;">
-                        <h4 style="color: white; margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-car"></i> In Automobile
-                        </h4>
-                        <p style="color: white; line-height: 1.8;">
-                            Autostrada A4 Milano-Venezia, uscita <strong>Peschiera del Garda</strong> o <strong>Sommacampagna</strong>. 
-                            Seguire indicazioni per Valeggio sul Mincio, poi Salionze. 
-                            Parcheggio gratuito disponibile presso gli impianti sportivi durante gli eventi.
-                        </p>
-                    </div>
-                    <div style="text-align: left;">
-                        <h4 style="color: white; margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-calendar-star"></i> Durante la Sagra
-                        </h4>
-                        <p style="color: white; line-height: 1.8;">
-                            Gli eventi si svolgono presso gli <strong>impianti sportivi di Salionze</strong> con ampio parcheggio gratuito, 
-                            servizio navetta dal centro paese e segnaletica dedicata per un facile accesso.
-                        </p>
-                    </div>
+                <div class="info-card scroll-animate">
+                    <div class="info-card-icon">📍</div>
+                    <h3>Dove trovarci</h3>
+                    <p>Salionze di Valeggio sul Mincio<br>Provincia di Verona</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Area Riservata Section -->
+    <section id="riservata" class="section">
         <div class="container">
-            <div class="footer-content">
+            <h2>Area Riservata</h2>
+            <div class="login-form scroll-animate">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: white; font-size: 1.5rem;">Accesso Volontari</h3>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Nome Utente:</label>
+                        <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+                    </div>
+                    <button type="submit" class="login-button">Accedi</button>
+                </form>
+                <p style="text-align: center; margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+                    Area riservata ai soci e volontari dell'associazione
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h4><i class="fas fa-crown"></i> Associazione I Salionzesi ETS</h4>
-                    <p>Dal 1980 manteniamo vive le tradizioni del nostro territorio, organizzando eventi che uniscono storia, cultura e modernità nel cuore del Veneto. La nostra missione è preservare il patrimonio storico di Salionze e creare momenti indimenticabili per tutta la comunità.</p>
+                    <h3>Associazione I Salionzesi ETS</h3>
+                    <p>Volontari al servizio della comunità di Salionze</p>
                 </div>
                 <div class="footer-section">
-                    <h4><i class="fas fa-calendar-alt"></i> I Nostri Eventi</h4>
-                    <p><strong>Sagra di Luglio</strong> - La rievocazione storica più spettacolare del Veneto<br>
-                    <strong>Natale Solidale</strong> - Generosità e calore umano per i nostri anziani<br>
-                    <strong>Falò della Befana</strong> - Tradizione e convivialità per iniziare l'anno insieme<br>
-                    <strong>Iniziative Culturali</strong> - Durante tutto l'anno</p>
+                    <h3>Contatti</h3>
+                    <p>Email: info@salionze.it<br>Salionze di Valeggio sul Mincio (VR)</p>
                 </div>
                 <div class="footer-section">
-                    <h4><i class="fas fa-network-wired"></i> Network & Partners</h4>
-                    <p><strong>Comune di Valeggio sul Mincio</strong><br>
-                    <strong>Provincia di Verona</strong><br>
-                    <strong>Regione Veneto</strong><br>
-                    <strong>Pro Loco Garda Veneto</strong><br>
-                    <strong>Comune di Bernalda (MT)</strong> - Gemellaggio<br>
-                    <strong>Associazioni del Territorio</strong></p>
+                    <h3>Eventi</h3>
+                    <p>Epifania • Sagra del Paese<br>Santa Lucia • Pacchi di Natale</p>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <hr style="margin: 2rem 0; opacity: 0.2; border: none; height: 1px; background: var(--primary-orange);">
-                <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">
-                    &copy; 2025 Associazione I Salionzesi ETS - Salionze, Valeggio sul Mincio (VR)
-                </p>
-                <p style="font-size: 0.9rem; opacity: 0.8;">
-                    Sito web realizzato con passione per la nostra comunità • 
-                    <span style="color: var(--primary-orange);">Dove la storia incontra il futuro</span>
-                </p>
+            <div style="border-top: 1px solid rgba(255,140,0,0.3); padding-top: 2rem; margin-top: 2rem;">
+                <p style="color: rgba(255,255,255,0.8);">&copy; 2024 Associazione I Salionzesi ETS. Tutti i diritti riservati.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script>
-        // Initialize particles background
+        // Create floating particles
         function createParticles() {
-            const particlesContainer = document.getElementById('bgParticles');
+            const particlesContainer = document.getElementById('particles');
             const particleCount = 50;
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 4) + 's';
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-                createParticles();
-            }, 1500);
-        });
+        // Header scroll effect
+        function handleScroll() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
 
-        // Navigation functionality with smooth transitions
-        function showSection(sectionId) {
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.scroll-animate');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        // Show section with enhanced animations
+        function showSection(sectionName) {
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -1564,278 +1016,164 @@
             
             // Show selected section with delay for smooth transition
             setTimeout(() => {
-                document.getElementById(sectionId).classList.add('active');
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    
+                    // Reset scroll animations for new section
+                    const scrollElements = targetSection.querySelectorAll('.scroll-animate');
+                    scrollElements.forEach((el, index) => {
+                        el.classList.remove('animated');
+                        setTimeout(() => {
+                            el.classList.add('animated');
+                        }, index * 100);
+                    });
+                    
+                    // Scroll to top smoothly
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             }, 150);
             
-            // Update navigation active state
-            const navLinks = document.querySelectorAll('.nav-container a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Smooth scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Close mobile menu if open
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = '';
         }
 
-        // Gallery filter functionality
-        function filterGallery(category) {
-            const photos = document.querySelectorAll('.photo-card');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            
-            // Update active filter button
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filter photos with smooth animation
-            photos.forEach(photo => {
-                if (category === 'all' || photo.dataset.category === category) {
-                    photo.style.display = 'block';
-                    photo.style.opacity = '0';
-                    photo.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        photo.style.transition = 'all 0.4s ease';
-                        photo.style.opacity = '1';
-                        photo.style.transform = 'scale(1)';
-                    }, 100);
-                } else {
-                    photo.style.transition = 'all 0.3s ease';
-                    photo.style.opacity = '0';
-                    photo.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        photo.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
-
-        // Enhanced photo modal
-        function openPhotoModal(photoTitle) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(10, 10, 10, 0.95);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                cursor: pointer;
-                opacity: 0;
-                transition: opacity 0.4s ease;
-                backdrop-filter: blur(20px);
-            `;
-            
-            const content = document.createElement('div');
-            content.style.cssText = `
-                background: var(--charcoal);
-                border: 2px solid var(--primary-orange);
-                border-radius: 25px;
-                padding: 3rem;
-                text-align: center;
-                max-width: 500px;
-                margin: 2rem;
-                transform: scale(0.8);
-                transition: transform 0.4s ease;
-                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-            `;
-            
-            content.innerHTML = `
-                <div style="font-size: 4rem; color: var(--primary-orange); margin-bottom: 1.5rem;">
-                    <i class="fas fa-camera"></i>
-                </div>
-                <h3 style="color: white; margin-bottom: 1rem; font-family: 'Orbitron', monospace; font-size: 1.5rem;">
-                    ${photoTitle}
-                </h3>
-                <p style="color: var(--light-gray); line-height: 1.6; margin-bottom: 2rem;">
-                    Questa funzionalità sarà presto disponibile! Qui potrai visualizzare e caricare 
-                    le foto più belle dei nostri eventi, creando un archivio digitale dei momenti più emozionanti.
-                </p>
-                <button onclick="closeModal()" style="
-                    background: var(--gradient-primary);
-                    color: white;
-                    border: none;
-                    padding: 12px 24px;
-                    border-radius: 25px;
-                    cursor: pointer;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    transition: all 0.3s ease;
-                ">
-                    <i class="fas fa-times"></i> Chiudi
-                </button>
-            `;
-            
-            modal.appendChild(content);
-            document.body.appendChild(modal);
-            
-            // Animate modal in
-            setTimeout(() => {
-                modal.style.opacity = '1';
-                content.style.transform = 'scale(1)';
-            }, 10);
-            
-            // Close modal function
-            window.closeModal = function() {
-                modal.style.opacity = '0';
-                content.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    document.body.removeChild(modal);
-                }, 400);
-            };
-            
-            // Close on click outside
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    window.closeModal();
-                }
-            });
-        }
-
-        // Back to top functionality
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Show/hide back to top button
-        window.addEventListener('scroll', function() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = '';
             } else {
-                backToTop.classList.remove('visible');
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = 'rgba(0,0,0,0.95)';
+                navMenu.style.backdropFilter = 'blur(20px)';
+                navMenu.style.border = '1px solid rgba(255,140,0,0.3)';
+                navMenu.style.padding = '2rem';
+                navMenu.style.zIndex = '1000';
+                navMenu.style.borderRadius = '0 0 15px 15px';
             }
-        });
+        }
 
-        // Smooth scroll animations for cards
-        function observeElements() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Enhanced login simulation
+            if (username === 'admin' && password === 'salionze2024') {
+                // Success animation
+                const button = event.target.querySelector('.login-button');
+                button.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                button.innerHTML = '✓ Accesso effettuato!';
+                
+                setTimeout(() => {
+                    alert('🎉 Benvenuto nell\'area riservata!\n\n📋 Funzionalità disponibili:\n• 👥 Gestione soci e volontari\n• 📝 Verbali riunioni di consiglio\n• 🎯 Pianificazione eventi\n• 📊 Statistiche partecipazione\n• 📷 Gestione galleria foto\n• 📧 Sistema messaggistica interna');
+                    
+                    // Reset button
+                    setTimeout(() => {
+                        button.style.background = 'linear-gradient(45deg, #ff8c00, #ffb347)';
+                        button.innerHTML = 'Accedi';
+                    }, 2000);
+                }, 1000);
+            } else {
+                // Error animation
+                const form = event.target;
+                form.style.animation = 'shake 0.5s ease-in-out';
+                
+                setTimeout(() => {
+                    form.style.animation = '';
+                    alert('❌ Credenziali non valide\n\n👤 Contatta l\'amministratore per ottenere l\'accesso o per recuperare le credenziali dimenticate.');
+                }, 500);
+            }
+        }
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+        // Add shake animation for login errors
+        const shakeKeyframes = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        const style = document.createElement('style');
+        style.textContent = shakeKeyframes;
+        document.head.appendChild(style);
+
+        // Enhanced card interactions
+        function addCardInteractions() {
+            const cards = document.querySelectorAll('.event-card, .info-card, .gallery-item');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = this.style.transform + ' scale(1.02)';
                 });
-            }, observerOptions);
-
-            // Observe cards for animation
-            const cards = document.querySelectorAll('.modern-card, .contact-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(card);
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = this.style.transform.replace(' scale(1.02)', '');
+                });
             });
         }
 
-        // Parallax effect for hero section
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        }
-
-        // Event countdown
-        function updateCountdown() {
-            const now = new Date();
-            const currentYear = now.getFullYear();
-            let nextSagra = new Date(currentYear, 6, 12); // July 12
-            
-            if (nextSagra < now) {
-                nextSagra = new Date(currentYear + 1, 6, 12);
-            }
-            
-            const timeDiff = nextSagra - now;
-            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            
-            if (daysLeft > 0 && daysLeft < 365) {
-                const countdownElement = document.createElement('div');
-                countdownElement.style.cssText = `
-                    background: rgba(255, 107, 0, 0.1);
-                    border: 2px solid var(--primary-orange);
-                    color: var(--primary-orange);
-                    padding: 1rem 2rem;
-                    border-radius: 25px;
-                    margin-top: 2rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    backdrop-filter: blur(10px);
-                    animation: pulse 2s infinite;
-                `;
-                
-                countdownElement.innerHTML = `
-                    <i class="fas fa-clock"></i> 
-                    Mancano ${daysLeft} giorni alla Sagra 2025!
-                `;
-                
-                const heroContent = document.querySelector('.hero-content');
-                heroContent.appendChild(countdownElement);
-            }
-        }
-
-        // Initialize everything
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            observeElements();
-            updateCountdown();
+            createParticles();
+            handleScrollAnimations();
+            addCardInteractions();
             
-            // Smooth scrolling performance optimization
-            let ticking = false;
+            // Add event listeners
+            window.addEventListener('scroll', () => {
+                handleScroll();
+                handleScrollAnimations();
+            });
             
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                    setTimeout(() => { ticking = false; }, 16);
-                }
+            // Trigger initial animations
+            setTimeout(() => {
+                const initialElements = document.querySelectorAll('#home .scroll-animate');
+                initialElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animated');
+                    }, index * 200);
+                });
+            }, 500);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.querySelector('.nav-menu');
+            const mobileMenuButton = document.querySelector('.mobile-menu');
+            
+            if (!navMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                navMenu.style.display = '';
             }
-            
-            window.addEventListener('scroll', requestTick);
-            
-            console.log('🔥 Sito Associazione I Salionzesi ETS v2.0 caricato!');
-            console.log('✨ Design nero/arancio ultra-moderno attivo');
         });
 
-        // Add dynamic hover effects to navigation
-        document.querySelectorAll('.nav-container a').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 5px 20px rgba(255, 107, 0, 0.4)';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.boxShadow = 'none';
-                }
-            });
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navMenu = document.querySelector('.nav-menu');
+                navMenu.style.display = '';
+            }
         });
 
-        // Enhanced button interactions
-        document.querySelectorAll('.cta-primary, .cta-secondary').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px) scale(1.05)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+        // Performance optimization: Throttle scroll events
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    handleScrollAnimations();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
     </script>
 </body>
 </html>
