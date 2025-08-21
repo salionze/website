@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Associazione I Salionzesi ETS - Salionze, Valeggio sul Mincio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-gold: #FFD700;
+            --deep-blue: #1a237e;
+            --crimson: #c62828;
+            --dark-navy: #0d1421;
+            --light-cream: #fdf6e3;
+            --warm-white: #fefefe;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,10 +24,10 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f6f0;
+            background: var(--light-cream);
         }
 
         .container {
@@ -26,10 +38,10 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #283593 100%);
             color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -40,144 +52,248 @@
         }
 
         .logo h1 {
-            font-size: 1.8rem;
-            color: #ffd700;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .logo p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
         /* Navigation */
         nav {
-            background-color: #8b1538;
-            padding: 0.5rem 0;
+            background: linear-gradient(135deg, var(--crimson) 0%, #d32f2f 100%);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .nav-container a {
             color: white;
             text-decoration: none;
-            padding: 0.7rem 1.5rem;
-            margin: 0 0.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: 500;
+            border: 2px solid transparent;
         }
 
-        .nav-container a:hover, .nav-container a.active {
-            background-color: #ffd700;
-            color: #8b1538;
+        .nav-container a:hover,
+        .nav-container a.active {
+            background: var(--primary-gold);
+            color: var(--crimson);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(139, 21, 56, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8dcc0" width="1200" height="600"/><path fill="%23d4af37" d="M600 300L700 200H500z"/><circle fill="%238b1538" cx="300" cy="150" r="50"/><circle fill="%231e3c72" cx="900" cy="450" r="80"/></svg>');
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.9) 0%, 
+                rgba(198, 40, 40, 0.8) 50%, 
+                rgba(255, 215, 0, 0.7) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8dcc0" width="1200" height="600"/><circle fill="%23FFD700" cx="300" cy="150" r="80" opacity="0.1"/><circle fill="%231a237e" cx="800" cy="200" r="120" opacity="0.08"/><circle fill="%23c62828" cx="1000" cy="450" r="100" opacity="0.06"/></svg>');
             background-size: cover;
             background-position: center;
-            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
-            padding: 5rem 0;
+            color: white;
+            position: relative;
         }
 
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: slideUp 1s ease-out;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: slideUp 1s ease-out 0.2s both;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #ffd700;
-            color: #8b1538;
-            padding: 15px 30px;
+            background: var(--primary-gold);
+            color: var(--deep-blue);
+            padding: 18px 35px;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            animation: slideUp 1s ease-out 0.4s both;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats */
+        .stats {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         /* Sections */
         .section {
-            padding: 4rem 0;
+            padding: 5rem 0;
             display: none;
         }
 
         .section.active {
             display: block;
+            animation: fadeIn 0.5s ease-out;
         }
 
-        .section h2 {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
-            color: #1e3c72;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
             position: relative;
         }
 
-        .section h2:after {
+        .section-header h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #8b1538, #ffd700);
+            height: 4px;
+            background: linear-gradient(90deg, var(--crimson), var(--primary-gold));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Cards */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-top: 4px solid #8b1538;
+            border-top: 4px solid var(--crimson);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .card h3 {
-            color: #1e3c72;
+            font-family: 'Playfair Display', serif;
+            color: var(--deep-blue);
             margin-bottom: 1rem;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .card p {
@@ -185,64 +301,73 @@
             line-height: 1.7;
         }
 
-        /* Historical section */
-        .historical-content {
-            background: white;
+        /* Event Highlight */
+        .event-highlight {
+            background: linear-gradient(135deg, var(--crimson) 0%, #d32f2f 100%);
+            color: white;
             padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin: 2rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.3);
         }
 
-        .historical-quote {
-            background: linear-gradient(135deg, #f8f6f0, #e8dcc0);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #8b1538;
-            margin: 2rem 0;
-            font-style: italic;
-            font-size: 1.1rem;
+        .event-highlight h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .date-badge {
+            background: var(--primary-gold);
+            color: var(--deep-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.5rem;
         }
 
         /* Gallery */
         .gallery-year {
             margin: 3rem 0;
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .gallery-year h3 {
-            color: #1e3c72;
+            font-family: 'Playfair Display', serif;
+            color: var(--deep-blue);
             font-size: 1.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
         }
 
         .photo-placeholder {
-            background: linear-gradient(135deg, #e8dcc0, #d4af37);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #3949ab 100%);
             height: 200px;
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8b1538;
-            font-weight: bold;
+            color: white;
+            font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .photo-placeholder:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.3);
         }
 
         /* Contact */
@@ -250,26 +375,39 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .contact-info {
+        .contact-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-gold);
         }
 
-        .contact-info h3 {
-            color: #1e3c72;
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--deep-blue);
             margin-bottom: 1rem;
         }
 
         /* Footer */
         footer {
-            background-color: #1e3c72;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #283593 100%);
             color: white;
-            text-align: center;
             padding: 3rem 0;
             margin-top: 4rem;
         }
@@ -282,18 +420,56 @@
         }
 
         .footer-section h4 {
-            color: #ffd700;
+            color: var(--primary-gold);
             margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Responsive */
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            color: var(--deep-blue);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
+            .hero-content h2 {
+                font-size: 2.5rem;
             }
             
-            .hero p {
+            .hero-subtitle {
                 font-size: 1.1rem;
+            }
+            
+            .stats {
+                position: static;
+                transform: none;
+                margin-top: 3rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .nav-container {
@@ -301,39 +477,13 @@
                 align-items: center;
             }
             
-            .header-content {
-                text-align: center;
-            }
-            
             .cards-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Eventi speciali */
-        .event-highlight {
-            background: linear-gradient(135deg, #8b1538, #a61e5a);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .event-highlight h3 {
-            color: #ffd700;
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .date-badge {
-            background-color: #ffd700;
-            color: #8b1538;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin: 0.5rem;
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
@@ -342,7 +492,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1>Associazione I Salionzesi ETS</h1>
+                    <h1><i class="fas fa-crown"></i> I Salionzesi ETS</h1>
                     <p>Tradizione, Cultura e Comunità - Salionze, Valeggio sul Mincio (VR)</p>
                 </div>
             </div>
@@ -352,13 +502,27 @@
     <nav>
         <div class="container">
             <div class="nav-container">
-                <a href="#" onclick="showSection('home')" class="active">Home</a>
-                <a href="#" onclick="showSection('chi-siamo')">Chi Siamo</a>
-                <a href="#" onclick="showSection('sagra')">Sagra di Luglio</a>
-                <a href="#" onclick="showSection('eventi')">Eventi</a>
-                <a href="#" onclick="showSection('storia')">Storia</a>
-                <a href="#" onclick="showSection('gallery')">Galleria Foto</a>
-                <a href="#" onclick="showSection('contatti')">Contatti</a>
+                <a href="#" onclick="showSection('home')" class="active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" onclick="showSection('chi-siamo')">
+                    <i class="fas fa-users"></i> Chi Siamo
+                </a>
+                <a href="#" onclick="showSection('sagra')">
+                    <i class="fas fa-calendar-star"></i> Sagra di Luglio
+                </a>
+                <a href="#" onclick="showSection('eventi')">
+                    <i class="fas fa-star"></i> Eventi
+                </a>
+                <a href="#" onclick="showSection('storia')">
+                    <i class="fas fa-scroll"></i> Storia
+                </a>
+                <a href="#" onclick="showSection('gallery')">
+                    <i class="fas fa-camera"></i> Galleria
+                </a>
+                <a href="#" onclick="showSection('contatti')">
+                    <i class="fas fa-envelope"></i> Contatti
+                </a>
             </div>
         </div>
     </nav>
@@ -367,25 +531,47 @@
     <section id="home" class="section active">
         <div class="hero">
             <div class="container">
-                <h2>Benvenuti nel cuore di Salionze</h2>
-                <p>Dove la storia incontra la tradizione e la comunità vive insieme</p>
-                <a href="#" onclick="showSection('sagra')" class="cta-button">Scopri la Sagra di Luglio</a>
+                <div class="hero-content">
+                    <h2>Benvenuti nel Cuore di Salionze</h2>
+                    <p class="hero-subtitle">Dove la storia millenaria incontra la tradizione e la comunità vive insieme eventi straordinari</p>
+                    <a href="#" onclick="showSection('sagra')" class="cta-button">
+                        Scopri la Sagra di Luglio <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">452</span>
+                    <span class="stat-label">Anno d.C.</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Giorni di Festa</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1573</span>
+                    <span class="stat-label">Anni di Storia</span>
+                </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="padding: 4rem 20px;">
             <div class="cards-grid">
                 <div class="card">
-                    <h3>🎭 Rievocazione Storica</h3>
-                    <p>Ogni luglio riviviamo il leggendario incontro tra Papa Leone Magno e Attila del 452 d.C., un evento unico nel suo genere che ha reso famosa Salionze in tutto il Veneto.</p>
+                    <i class="fas fa-theater-masks card-icon"></i>
+                    <h3>Rievocazione Storica Unica</h3>
+                    <p>Ogni luglio riviviamo il leggendario incontro tra Papa Leone Magno e Attila del 452 d.C., un evento spettacolare con centinaia di figuranti in costume che ha reso famosa Salionze in tutto il Veneto.</p>
                 </div>
                 <div class="card">
-                    <h3>🍝 Gastronomia Locale</h3>
-                    <p>Quattro giorni di festa con piatti della tradizione veronese, tortellini di Valeggio, carne alla griglia e i migliori vini del territorio del Garda e Custoza.</p>
+                    <i class="fas fa-utensils card-icon"></i>
+                    <h3>Gastronomia d'Eccellenza</h3>
+                    <p>Quattro giorni di festa con i migliori piatti della tradizione veronese: tortellini di Valeggio, carne alla griglia, vini DOC del territorio del Garda e Custoza.</p>
                 </div>
                 <div class="card">
-                    <h3>🎄 Eventi Natalizi</h3>
-                    <p>A Natale organizziamo la consegna di pacchi regalo per gli anziani del paese, mentre all'Epifania il tradizionale falò della Befana con rinfresco per tutti.</p>
+                    <i class="fas fa-heart card-icon"></i>
+                    <h3>Solidarietà e Comunità</h3>
+                    <p>A Natale organizziamo la consegna di pacchi regalo per gli anziani del paese, mentre all'Epifania il tradizionale falò della Befana unisce tutta la comunità.</p>
                 </div>
             </div>
         </div>
@@ -394,31 +580,40 @@
     <!-- CHI SIAMO SECTION -->
     <section id="chi-siamo" class="section">
         <div class="container">
-            <h2>Chi Siamo</h2>
-            <div class="historical-content">
-                <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">
-                    L'<strong>Associazione I Salionzesi ETS</strong> è un'associazione di volontari che opera nel paese di Salionze, 
-                    frazione di Valeggio sul Mincio in provincia di Verona.
-                </p>
-                
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>La Nostra Missione</h3>
-                        <p>Promuoviamo la cultura locale, organizziamo eventi per la comunità e manteniamo vive le tradizioni del nostro territorio. 
-                        Siamo un Ente del Terzo Settore impegnato nel volontariato e nella valorizzazione del patrimonio storico-culturale di Salionze.</p>
-                    </div>
-                    <div class="card">
-                        <h3>I Nostri Valori</h3>
-                        <p>Tradizione, solidarietà, comunità e cultura sono i pilastri su cui si basa la nostra associazione. 
-                        Crediamo nell'importanza di tramandare la storia e di creare occasioni di incontro per tutti i cittadini.</p>
-                    </div>
+            <div class="section-header">
+                <h2>Chi Siamo</h2>
+                <p class="section-subtitle">Un'associazione di volontari che mantiene viva la tradizione e crea momenti di condivisione per tutta la comunità</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-flag card-icon"></i>
+                    <h3>La Nostra Missione</h3>
+                    <p>L'<strong>Associazione I Salionzesi ETS</strong> è un'organizzazione di volontari che opera nel pittoresco paese di Salionze, frazione di Valeggio sul Mincio in provincia di Verona. Promuoviamo la cultura locale, organizziamo eventi memorabili per la comunità e manteniamo vive le tradizioni millenarie del nostro territorio.</p>
                 </div>
+                <div class="card">
+                    <i class="fas fa-hands-helping card-icon"></i>
+                    <h3>I Nostri Valori</h3>
+                    <p>Tradizione, solidarietà, comunità e cultura sono i pilastri fondamentali su cui si basa la nostra associazione. Crediamo profondamente nell'importanza di tramandare la storia alle nuove generazioni e di creare occasioni di incontro e festa per tutti i cittadini.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-certificate card-icon"></i>
+                    <h3>Ente del Terzo Settore</h3>
+                    <p>Siamo un Ente del Terzo Settore (ETS) ufficialmente riconosciuto, impegnato nel volontariato e nella valorizzazione del patrimonio storico-culturale di Salionze. La nostra attività è patrocinata dal Comune di Valeggio sul Mincio.</p>
+                </div>
+            </div>
 
-                <div class="event-highlight">
-                    <h3>I Nostri Eventi Principali</h3>
-                    <div class="date-badge">Luglio</div> Sagra di Salionze con Rievocazione Storica<br>
-                    <div class="date-badge">Natale</div> Consegna pacchi regalo agli anziani<br>
-                    <div class="date-badge">6 Gennaio</div> Falò della Befana con rinfresco
+            <div class="event-highlight">
+                <h3><i class="fas fa-calendar-alt"></i> I Nostri Eventi Principali</h3>
+                <div style="margin: 2rem 0;">
+                    <div class="date-badge"><i class="fas fa-crown"></i> Luglio</div> 
+                    <span style="font-size: 1.1rem;">Sagra di Salionze con Rievocazione Storica</span><br><br>
+                    
+                    <div class="date-badge"><i class="fas fa-gift"></i> Natale</div> 
+                    <span style="font-size: 1.1rem;">Consegna pacchi regalo agli anziani</span><br><br>
+                    
+                    <div class="date-badge"><i class="fas fa-fire"></i> 6 Gennaio</div> 
+                    <span style="font-size: 1.1rem;">Falò della Befana con rinfresco</span>
                 </div>
             </div>
         </div>
@@ -427,39 +622,42 @@
     <!-- SAGRA SECTION -->
     <section id="sagra" class="section">
         <div class="container">
-            <h2>Sagra di Salionze</h2>
-            <div class="historical-content">
-                <p style="font-size: 1.3rem; text-align: center; margin-bottom: 2rem; color: #8b1538;">
-                    <strong>Quattro giorni di festa ogni luglio presso gli impianti sportivi di Salionze</strong>
-                </p>
+            <div class="section-header">
+                <h2>Sagra di Salionze</h2>
+                <p class="section-subtitle">Quattro giorni indimenticabili di festa, tradizione e spettacolo presso gli impianti sportivi di Salionze</p>
+            </div>
 
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>🎵 Venerdì - Apertura</h3>
-                        <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>Ore 21:00</strong> - Musica dal vivo con band e orchestre locali<br>
-                        Tortellini di Valeggio, carne alla griglia, vini DOC del territorio</p>
-                    </div>
-                    <div class="card">
-                        <h3>🎸 Sabato - Musica</h3>
-                        <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>Ore 21:00</strong> - Concerti e ballo<br>
-                        Specialità gastronomiche veronesi e birra</p>
-                    </div>
-                    <div class="card">
-                        <h3>🎭 Domenica - Tradizione</h3>
-                        <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
-                        <strong>Ore 21:00</strong> - Musica e spettacoli<br>
-                        Piatti della tradizione locale</p>
-                    </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-music card-icon"></i>
+                    <h3>🎵 Venerdì - Grande Apertura</h3>
+                    <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
+                    <strong>Ore 21:00</strong> - Musica dal vivo<br>
+                    Tortellini di Valeggio, carne alla griglia, vini DOC del territorio e atmosfera festosa!</p>
                 </div>
+                <div class="card">
+                    <i class="fas fa-guitar card-icon"></i>
+                    <h3>🎸 Sabato - Notte di Musica</h3>
+                    <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
+                    <strong>Ore 21:00</strong> - Concerti dal vivo e ballo<br>
+                    Serata dedicata alla musica con artisti locali e specialità gastronomiche veronesi.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-drumstick-bite card-icon"></i>
+                    <h3>🍖 Domenica - Tradizioni</h3>
+                    <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici<br>
+                    <strong>Ore 21:00</strong> - Spettacoli e musica tradizionale<br>
+                    Giornata dedicata ai sapori autentici della tradizione culinaria veronese.</p>
+                </div>
+            </div>
 
-                <div class="event-highlight">
-                    <h3>🏛️ LUNEDÌ - IL GRANDE EVENTO</h3>
-                    <p><strong>Ore 19:30</strong> - Apertura chioschi gastronomici</p>
-                    <p><strong>Ore 21:30</strong> - <span style="color: #ffd700;">RIEVOCAZIONE STORICA IN COSTUME</span></p>
-                    <p>L'incontro tra Papa Leone Magno e Attila Re degli Unni</p>
-                    <p><strong>A seguire</strong> - Spettacolo di fuochi d'artificio</p>
+            <div class="event-highlight">
+                <h3><i class="fas fa-crown"></i> LUNEDÌ - IL GRANDE EVENTO STORICO</h3>
+                <div style="margin: 2rem 0; font-size: 1.1rem;">
+                    <p><strong><i class="fas fa-clock"></i> Ore 19:30</strong> - Apertura chioschi gastronomici</p>
+                    <p><strong><i class="fas fa-theater-masks"></i> Ore 21:30</strong> - <span style="color: #FFD700; font-size: 1.3rem; font-weight: bold;">RIEVOCAZIONE STORICA IN COSTUME</span></p>
+                    <p style="font-size: 1.2rem; margin: 1rem 0;">L'incontro tra Papa Leone Magno e Attila Re degli Unni</p>
+                    <p><strong><i class="fas fa-star"></i> A seguire</strong> - Spettacolare show di fuochi d'artificio</p>
                 </div>
             </div>
         </div>
@@ -468,39 +666,40 @@
     <!-- EVENTI SECTION -->
     <section id="eventi" class="section">
         <div class="container">
-            <h2>I Nostri Eventi</h2>
+            <div class="section-header">
+                <h2>I Nostri Eventi</h2>
+                <p class="section-subtitle">Momenti speciali che uniscono la comunità durante tutto l'anno</p>
+            </div>
             
             <div class="cards-grid">
                 <div class="card">
+                    <i class="fas fa-crown card-icon"></i>
                     <h3>🎭 Rievocazione Storica</h3>
-                    <p><strong>Quando:</strong> Lunedì della Sagra di Luglio<br>
-                    <strong>Dove:</strong> Impianti sportivi di Salionze<br>
-                    Un evento in costume unico nel suo genere che riporta in vita lo storico incontro del 452 d.C. 
-                    tra Papa Leone Magno e Attila, con centinaia di figuranti in costume d'epoca.</p>
+                    <p><strong><i class="fas fa-calendar"></i> Quando:</strong> Lunedì della Sagra di Luglio<br>
+                    <strong><i class="fas fa-map-marker-alt"></i> Dove:</strong> Impianti sportivi di Salionze<br><br>
+                    Un evento in costume unico nel suo genere che riporta in vita lo storico incontro del 452 d.C. tra Papa Leone Magno e Attila, con centinaia di figuranti in costume d'epoca.</p>
                 </div>
                 
                 <div class="card">
+                    <i class="fas fa-gift card-icon"></i>
                     <h3>🎄 Natale di Solidarietà</h3>
-                    <p><strong>Quando:</strong> Periodo natalizio<br>
-                    <strong>Cosa:</strong> Consegna pacchi regalo<br>
-                    Ogni Natale i nostri volontari preparano e consegnano personalmente pacchi regalo 
-                    a tutti gli anziani del paese, un gesto di solidarietà e vicinanza alla nostra comunità.</p>
+                    <p><strong><i class="fas fa-calendar"></i> Quando:</strong> Periodo natalizio<br>
+                    <strong><i class="fas fa-heart"></i> Cosa:</strong> Consegna pacchi regalo<br><br>
+                    Ogni Natale i nostri volontari preparano e consegnano personalmente pacchi regalo a tutti gli anziani del paese, un gesto di solidarietà e vicinanza alla nostra comunità.</p>
                 </div>
                 
                 <div class="card">
+                    <i class="fas fa-fire card-icon"></i>
                     <h3>🔥 Falò della Befana</h3>
-                    <p><strong>Quando:</strong> 6 Gennaio - Epifania<br>
-                    <strong>Dove:</strong> Centro del paese<br>
-                    Il tradizionale falò che chiude le festività natalizie con un grande fuoco 
-                    e rinfresco offerto a tutti i cittadini di Salionze e dintorni.</p>
+                    <p><strong><i class="fas fa-calendar"></i> Quando:</strong> 6 Gennaio - Epifania<br>
+                    <strong><i class="fas fa-map-marker-alt"></i> Dove:</strong> Centro del paese<br><br>
+                    Il tradizionale falò che chiude le festività natalizie con un grande fuoco augurale e rinfresco offerto a tutti i cittadini di Salionze e dintorni.</p>
                 </div>
             </div>
 
-            <div class="historical-content">
-                <h3 style="color: #1e3c72; text-align: center; margin-bottom: 1rem;">Gemellaggio con Bernalda</h3>
-                <p>Il nostro evento storico ha creato un legame speciale con il comune di Bernalda (MT), 
-                che ha San Leone Magno come patrono. Questo gemellaggio testimonia l'importanza 
-                nazionale della nostra rievocazione storica.</p>
+            <div class="event-highlight">
+                <h3><i class="fas fa-handshake"></i> Gemellaggio con Bernalda</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">Il nostro evento storico ha creato un legame speciale con il comune di Bernalda (MT), che ha San Leone Magno come patrono. Questo gemellaggio testimonia l'importanza nazionale della nostra rievocazione storica.</p>
             </div>
         </div>
     </section>
@@ -508,396 +707,11 @@
     <!-- STORIA SECTION -->
     <section id="storia" class="section">
         <div class="container">
-            <h2>La Storia di Salionze</h2>
-            
-            <div class="historical-content">
-                <h3 style="color: #8b1538; font-size: 2rem; text-align: center; margin-bottom: 2rem;">
-                    L'Incontro che Cambiò la Storia
-                </h3>
-                
-                <div class="historical-quote">
-                    "Nel 452 d.C., sulle rive del fiume Mincio, nella località che oggi chiamiamo Salionze, 
-                    avvenne uno degli eventi più significativi della storia europea: l'incontro tra Attila, 
-                    re degli Unni, e Papa Leone Magno."
-                </div>
-
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>📜 Il Contesto Storico</h3>
-                        <p>Attila aveva devastato città come Aquileia, Padova, Verona, Brescia e Milano. 
-                        La sua avanzata verso Roma sembrava inarrestabile quando Papa Leone Magno 
-                        decise di incontrarlo personalmente per fermare le devastazioni.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>🤝 L'Incontro</h3>
-                        <p>Secondo la tradizione, l'incontro avvenne presso il guado del Mincio, 
-                        nel luogo chiamato "Ager Ambulejus". Il Papa riuscì a convincere Attila 
-                        a ritirarsi, salvando Roma dalla distruzione.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>✨ La Leggenda</h3>
-                        <p>La leggenda narra che durante il colloquio apparvero i Santi Pietro e Paolo 
-                        armati di spade, spingendo Attila al ritiro. Il re degli Unni spezzò una freccia 
-                        in segno di rinuncia alla conquista di Roma.</p>
-                    </div>
-                </div>
-
-                <div class="historical-content" style="background: linear-gradient(135deg, #f8f6f0, #e8dcc0);">
-                    <h3 style="color: #1e3c72;">Il Nome di Salionze</h3>
-                    <p>Il nome della nostra frazione deriva proprio da San Leone Magno (San Lionce in dialetto locale), 
-                    a testimonianza dell'importanza di questo evento storico per la nostra comunità. 
-                    Ogni anno, dal 1980, riviviamo questo momento attraverso la nostra rievocazione storica.</p>
-                </div>
+            <div class="section-header">
+                <h2>La Storia di Salionze</h2>
+                <p class="section-subtitle">Un viaggio attraverso i secoli per scoprire l'evento che ha cambiato la storia d'Europa</p>
             </div>
-        </div>
-    </section>
-
-    <!-- GALLERY SECTION -->
-    <section id="gallery" class="section">
-        <div class="container">
-            <h2>Galleria Fotografica</h2>
-            <p style="text-align: center; font-style: italic; margin-bottom: 2rem;">
-                I momenti più belli dei nostri eventi attraverso gli anni
-            </p>
-
-            <div class="gallery-year">
-                <h3>2024 - Sagra di Salionze</h3>
-                <div class="photo-grid">
-                    <div class="photo-placeholder">📸 Rievocazione Storica 2024</div>
-                    <div class="photo-placeholder">📸 Corteo Papa Leone</div>
-                    <div class="photo-placeholder">📸 Accampamento Unno</div>
-                    <div class="photo-placeholder">📸 Fuochi d'Artificio</div>
-                    <div class="photo-placeholder">📸 Chioschi Gastronomici</div>
-                    <div class="photo-placeholder">📸 Musica dal Vivo</div>
-                </div>
-            </div>
-
-            <div class="gallery-year">
-                <h3>2023 - Eventi dell'Anno</h3>
-                <div class="photo-grid">
-                    <div class="photo-placeholder">📸 Sagra 2023</div>
-                    <div class="photo-placeholder">📸 Natale Solidale</div>
-                    <div class="photo-placeholder">📸 Falò della Befana</div>
-                    <div class="photo-placeholder">📸 Preparativi</div>
-                </div>
-            </div>
-
-            <div class="gallery-year">
-                <h3>2022 - Ripresa Post-Pandemia</h3>
-                <div class="photo-grid">
-                    <div class="photo-placeholder">📸 Ritorno della Sagra</div>
-                    <div class="photo-placeholder">📸 Volontari al Lavoro</div>
-                    <div class="photo-placeholder">📸 Comunità Unita</div>
-                    <div class="photo-placeholder">📸 Tradizioni Ritrovate</div>
-                </div>
-            </div>
-
-            <div class="historical-content">
-                <h3>Come Caricare le Vostre Foto</h3>
-                <p>Per aggiungere le foto dei vostri eventi, potrete facilmente sostituire i segnaposto 
-                con le immagini reali. Organizzeremo le foto per anno e per evento, 
-                creando un archivio storico della vita della nostra associazione.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTATTI SECTION -->
-    <section id="contatti" class="section">
-        <div class="container">
-            <h2>Contatti</h2>
             
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>📍 Dove Siamo</h3>
-                    <p><strong>Salionze</strong><br>
-                    Frazione di Valeggio sul Mincio<br>
-                    Provincia di Verona, Veneto<br>
-                    Italia</p>
-                </div>
-                
-                <div class="contact-info">
-                    <h3>📧 Contatti</h3>
-                    <p><strong>Email:</strong> info@salionze.it<br>
-                    <strong>Sito web:</strong> www.salionze.it<br>
-                    <strong>Seguici sui social</strong> per rimanere aggiornato sui nostri eventi!</p>
-                </div>
-                
-                <div class="contact-info">
-                    <h3>🏛️ Informazioni ETS</h3>
-                    <p><strong>Associazione I Salionzesi ETS</strong><br>
-                    Ente del Terzo Settore<br>
-                    Organizzazione di Volontariato<br>
-                    Patrocinata dal Comune di Valeggio sul Mincio</p>
-                </div>
-            </div>
-
-            <div class="historical-content">
-                <h3>Come Raggiungerci</h3>
-                <p><strong>In auto:</strong> Salionze si trova lungo la strada che collega Valeggio sul Mincio 
-                al Lago di Garda, facilmente raggiungibile dall'autostrada A4.</p>
-                <p><strong>Sagra di Luglio:</strong> Gli eventi si svolgono presso gli impianti sportivi 
-                di Salionze, con ampio parcheggio disponibile.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Associazione I Salionzesi ETS</h4>
-                    <p>Tradizione, cultura e comunità nel cuore del Veneto</p>
-                </div>
-                <div class="footer-section">
-                    <h4>I Nostri Eventi</h4>
-                    <p>Sagra di Luglio • Natale Solidale • Falò della Befana</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Collegamenti Utili</h4>
-                    <p>Comune di Valeggio sul Mincio<br>
-                    Provincia di Verona<br>
-                    Regione Veneto</p>
-                </div>
-            </div>
-            <hr style="margin: 2rem 0; opacity: 0.3;">
-            <p>&copy; 2025 Associazione I Salionzesi ETS - Salionze, Valeggio sul Mincio (VR)</p>
-            <p style="font-size: 0.9rem; opacity: 0.8;">Sito web realizzato con passione per la nostra comunità</p>
-        </div>
-    </footer>
-
-    <script>
-        // Navigation functionality
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Update navigation active state
-            const navLinks = document.querySelectorAll('.nav-container a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Smooth scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Photo gallery functionality
-        function openPhotoModal(photoSrc, photoTitle) {
-            // Create modal for photo viewing
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-                cursor: pointer;
-            `;
-            
-            const img = document.createElement('img');
-            img.src = photoSrc;
-            img.alt = photoTitle;
-            img.style.cssText = `
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-                border-radius: 10px;
-            `;
-            
-            modal.appendChild(img);
-            document.body.appendChild(modal);
-            
-            // Close modal on click
-            modal.addEventListener('click', () => {
-                document.body.removeChild(modal);
-            });
-        }
-
-        // Add click events to photo placeholders
-        document.addEventListener('DOMContentLoaded', function() {
-            const photoPlaceholders = document.querySelectorAll('.photo-placeholder');
-            photoPlaceholders.forEach(placeholder => {
-                placeholder.addEventListener('click', function() {
-                    // For now, show a message about uploading photos
-                    alert('Qui potrete caricare le vostre foto degli eventi! Il segnaposto verrà sostituito con le immagini reali.');
-                });
-            });
-
-            // Smooth scrolling for CTA button
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showSection('sagra');
-                });
-            }
-
-            // Add some animation on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe cards for animation
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-        });
-
-        // Contact form simulation (you can implement a real form later)
-        function sendMessage() {
-            alert('Grazie per il vostro interesse! Vi risponderemo al più presto.');
-        }
-
-        // Search functionality for photos (future implementation)
-        function searchPhotos(year) {
-            const galleries = document.querySelectorAll('.gallery-year');
-            galleries.forEach(gallery => {
-                const galleryYear = gallery.querySelector('h3').textContent;
-                if (year === 'all' || galleryYear.includes(year)) {
-                    gallery.style.display = 'block';
-                } else {
-                    gallery.style.display = 'none';
-                }
-            });
-        }
-
-        // Add year filter buttons (optional enhancement)
-        function addYearFilters() {
-            const gallerySection = document.getElementById('gallery');
-            const container = gallerySection.querySelector('.container');
-            
-            const filterDiv = document.createElement('div');
-            filterDiv.style.cssText = `
-                text-align: center;
-                margin-bottom: 2rem;
-            `;
-            
-            const years = ['all', '2024', '2023', '2022'];
-            years.forEach(year => {
-                const button = document.createElement('button');
-                button.textContent = year === 'all' ? 'Tutti gli anni' : year;
-                button.style.cssText = `
-                    background: #1e3c72;
-                    color: white;
-                    border: none;
-                    padding: 0.5rem 1rem;
-                    margin: 0 0.25rem;
-                    border-radius: 20px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                `;
-                
-                button.addEventListener('click', () => searchPhotos(year));
-                button.addEventListener('mouseenter', () => {
-                    button.style.background = '#8b1538';
-                });
-                button.addEventListener('mouseleave', () => {
-                    button.style.background = '#1e3c72';
-                });
-                
-                filterDiv.appendChild(button);
-            });
-            
-            // Insert filter before gallery content
-            const firstGallery = container.querySelector('.gallery-year');
-            container.insertBefore(filterDiv, firstGallery);
-        }
-
-        // Mobile menu toggle (for future mobile optimization)
-        function toggleMobileMenu() {
-            const nav = document.querySelector('.nav-container');
-            nav.classList.toggle('mobile-open');
-        }
-
-        // Initialize enhanced features
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add year filters to gallery
-            addYearFilters();
-            
-            // Add some dynamic content loading simulation
-            setTimeout(() => {
-                console.log('Sito caricato completamente per Associazione I Salionzesi ETS');
-            }, 1000);
-        });
-
-        // Utility function for future photo upload
-        function handlePhotoUpload(input) {
-            const files = input.files;
-            if (files.length > 0) {
-                // This would integrate with your photo upload system
-                console.log('File selezionati per upload:', files);
-                alert(`${files.length} foto selezionate. Funzionalità di upload da implementare.`);
-            }
-        }
-
-        // Event countdown (for next sagra)
-        function updateEventCountdown() {
-            // Calculate days until next July sagra
-            const now = new Date();
-            const currentYear = now.getFullYear();
-            let nextSagra = new Date(currentYear, 6, 12); // July 12
-            
-            if (nextSagra < now) {
-                nextSagra = new Date(currentYear + 1, 6, 12);
-            }
-            
-            const timeDiff = nextSagra - now;
-            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            
-            return daysLeft;
-        }
-
-        // Add countdown to homepage
-        document.addEventListener('DOMContentLoaded', function() {
-            const hero = document.querySelector('.hero');
-            const daysLeft = updateEventCountdown();
-            
-            if (daysLeft > 0 && daysLeft < 365) {
-                const countdownDiv = document.createElement('div');
-                countdownDiv.style.cssText = `
-                    background: rgba(255, 215, 0, 0.9);
-                    color: #8b1538;
-                    padding: 1rem;
-                    border-radius: 10px;
-                    margin-top: 2rem;
-                    font-weight: bold;
-                    font-size: 1.1rem;
-                `;
-                countdownDiv.innerHTML = `🎭 Mancano ${daysLeft} giorni alla prossima Sagra di Salionze!`;
-                
-                const heroContainer = hero.querySelector('.container');
-                heroContainer.appendChild(countdownDiv);
-            }
-        });
-    </script>
+            <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 3rem 0; text-align: center;">
+                <h3 style="color: var(--crimson); font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem;">
+                    <i class="fas fa-scroll"></i> L'Incontro che
