@@ -207,7 +207,7 @@
             min-height: 100vh;
             background: 
                 linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.75) 50%, rgba(255, 107, 0, 0.15) 100%),
-                url('https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+                url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -2182,34 +2182,36 @@
             const sagraBadge = document.getElementById('next-sagra');
             
             // Reset visibility
-            nataleBadge.style.display = 'none';
-            befanaBadge.style.display = 'none';
-            sagraBadge.style.display = 'none';
+            if (nataleBadge) nataleBadge.style.display = 'none';
+            if (befanaBadge) befanaBadge.style.display = 'none';
+            if (sagraBadge) sagraBadge.style.display = 'none';
             
             // Logic for showing next events in chronological order
             if (currentMonth <= 1 || (currentMonth === 1 && currentDay < 6)) {
                 // Gennaio prima del 6: mostra Befana poi Sagra poi Natale
-                befanaBadge.style.display = 'inline-block';
-                sagraBadge.style.display = 'inline-block';
-                if (currentMonth === 1 && currentDay >= 6) {
+                if (befanaBadge) befanaBadge.style.display = 'inline-block';
+                if (sagraBadge) sagraBadge.style.display = 'inline-block';
+                if (currentMonth === 1 && currentDay >= 6 && nataleBadge) {
                     nataleBadge.style.display = 'inline-block';
                 }
             } else if (currentMonth >= 1 && currentMonth < 7) {
                 // Gennaio (dopo 6) - Giugno: mostra Sagra poi Natale poi Befana
-                sagraBadge.style.display = 'inline-block';
-                nataleBadge.style.display = 'inline-block';
-                befanaBadge.style.display = 'inline-block';
+                if (sagraBadge) sagraBadge.style.display = 'inline-block';
+                if (nataleBadge) nataleBadge.style.display = 'inline-block';
+                if (befanaBadge) befanaBadge.style.display = 'inline-block';
             } else if (currentMonth === 7 && currentDay < 11) {
                 // Luglio prima dell'11: mostra Sagra poi Natale poi Befana
-                sagraBadge.style.display = 'inline-block';
-                nataleBadge.style.display = 'inline-block';
-                befanaBadge.style.display = 'inline-block';
+                if (sagraBadge) sagraBadge.style.display = 'inline-block';
+                if (nataleBadge) nataleBadge.style.display = 'inline-block';
+                if (befanaBadge) befanaBadge.style.display = 'inline-block';
             } else if ((currentMonth === 7 && currentDay >= 15) || currentMonth > 7) {
                 // Dopo la sagra: mostra Natale poi Befana poi Sagra
-                nataleBadge.style.display = 'inline-block';
-                befanaBadge.style.display = 'inline-block';
-                sagraBadge.style.display = 'inline-block';
+                if (nataleBadge) nataleBadge.style.display = 'inline-block';
+                if (befanaBadge) befanaBadge.style.display = 'inline-block';
+                if (sagraBadge) sagraBadge.style.display = 'inline-block';
             }
+            
+            console.log('Next events updated for month:', currentMonth, 'day:', currentDay);
         }
 
         // Initialize everything
