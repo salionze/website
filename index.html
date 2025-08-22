@@ -1050,7 +1050,7 @@
     </section>
 
     <!-- CHI SIAMO SECTION -->
-    <section id="chi-siamo" class="section">
+    <section id="chi-siamo" class="section" style="background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.75) 50%, rgba(255, 107, 0, 0.1) 100%), url('salionzesi.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">La Nostra Identità</div>
@@ -1080,16 +1080,6 @@
                     <h3 class="card-title">I Nostri Valori</h3>
                     <p class="card-description">
                         Tradizione, solidarietà, comunità e innovazione culturale sono i pilastri della nostra associazione. Crediamo nel potere della storia di unire le generazioni e nel valore della condivisione comunitaria.
-                    </p>
-                </div>
-                
-                <div class="modern-card">
-                    <div class="card-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="card-title">Riconoscimenti</h3>
-                    <p class="card-description">
-                        Ente del Terzo Settore (ETS) ufficialmente riconosciuto, patrocinato dal Comune di Valeggio sul Mincio. La nostra rievocazione storica ha ottenuto riconoscimenti regionali per l'eccellenza culturale.
                     </p>
                 </div>
             </div>
@@ -2343,6 +2333,8 @@
                 dashboardContent.style.display = 'none';
             }
         }
+
+        // Add hover effects to CTA buttons
         document.querySelectorAll('.cta-primary, .cta-secondary').forEach(button => {
             button.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-3px) scale(1.05)';
